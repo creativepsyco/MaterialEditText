@@ -74,6 +74,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:hint="Basic"
+          app:disabledTextColor="@color/material_blue_grey_800"
           android:textColor="@color/text_color"/>
 
         <Button

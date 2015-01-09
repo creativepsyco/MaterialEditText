@@ -205,6 +205,11 @@ public class MaterialEditText extends EditText {
    * Helper text color
    */
   private int helperTextColor = -1;
+   
+   /**
+   * Disabled text line color
+   */
+  private int disabledTextColor = -1;
 
   /**
    * error text for manually invoked {@link #setError(CharSequence)}
@@ -370,6 +375,7 @@ public class MaterialEditText extends EditText {
     singleLineEllipsis = typedArray.getBoolean(R.styleable.MaterialEditText_met_singleLineEllipsis, false);
     helperText = typedArray.getString(R.styleable.MaterialEditText_met_helperText);
     helperTextColor = typedArray.getColor(R.styleable.MaterialEditText_met_helperTextColor, -1);
+    disabledTextColor = typedArray.getColor(R.styleable.MaterialEditText_disabledTextColor, -1);
     minBottomTextLines = typedArray.getInt(R.styleable.MaterialEditText_met_minBottomTextLines, 0);
     String fontPathForAccent = typedArray.getString(R.styleable.MaterialEditText_met_accentTypeface);
     if (fontPathForAccent != null && !isInEditMode()) {
@@ -1267,10 +1273,15 @@ public class MaterialEditText extends EditText {
         paint.setColor(errorColor);
         canvas.drawRect(startX, lineStartY, endX, lineStartY + getPixel(2), paint);
       } else if (!isEnabled()) { // disabled
-        paint.setColor(underlineColor != -1 ? underlineColor : baseColor & 0x00ffffff | 0x44000000);
-        float interval = getPixel(1);
-        for (float xOffset = 0; xOffset < getWidth(); xOffset += interval * 3) {
-          canvas.drawRect(startX + xOffset, lineStartY, startX + xOffset + interval, lineStartY + getPixel(1), paint);
+        if (disabledTextColor == -1) {
+          paint.setColor(underlineColor != -1 ? underlineColor : baseColor & 0x00ffffff | 0x44000000);
+          float interval = getPixel(1);
+          for (float xOffset = 0; xOffset < getWidth(); xOffset += interval * 3) {
+            canvas.drawRect(startX + xOffset, lineStartY, startX + xOffset + interval, lineStartY + getPixel(1), paint);
+          }
+        } else {
+          paint.setColor(disabledTextColor);
+          canvas.drawRect(startX, lineStartY, endX, lineStartY + getPixel(1), paint);
         }
       } else if (hasFocus()) { // focused
         paint.setColor(primaryColor);
