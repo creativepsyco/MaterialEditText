@@ -26,7 +26,7 @@
     <!-- Helper text color -->
     <attr name="met_helperTextColor" format="color" />
 	  <!-- Disabled text color -->
-    <attr name="disabledTextColor" format="color"/>
+    <attr name="met_disabledTextColor" format="color"/>
     <!-- Font of the paint used to draw accent texts -->
     <attr name="met_accentTypeface" format="string" />
     <!-- Font used on view -->

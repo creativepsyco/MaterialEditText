@@ -375,7 +375,7 @@ public class MaterialEditText extends EditText {
     singleLineEllipsis = typedArray.getBoolean(R.styleable.MaterialEditText_met_singleLineEllipsis, false);
     helperText = typedArray.getString(R.styleable.MaterialEditText_met_helperText);
     helperTextColor = typedArray.getColor(R.styleable.MaterialEditText_met_helperTextColor, -1);
-    disabledTextColor = typedArray.getColor(R.styleable.MaterialEditText_disabledTextColor, -1);
+    disabledTextColor = typedArray.getColor(R.styleable.MaterialEditText_met_disabledTextColor, -1);
     minBottomTextLines = typedArray.getInt(R.styleable.MaterialEditText_met_minBottomTextLines, 0);
     String fontPathForAccent = typedArray.getString(R.styleable.MaterialEditText_met_accentTypeface);
     if (fontPathForAccent != null && !isInEditMode()) {
